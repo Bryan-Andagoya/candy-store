@@ -22,7 +22,7 @@ export const StackNavigator = () => {
   const { isAuthenticated } = useUserStore();
 
   return (
-    <Stack.Navigator screenOptions={{ title: "" }}>
+    <Stack.Navigator screenOptions={{ title: "", headerShadowVisible: false }}>
       {isAuthenticated ? (
         <>
           <Stack.Screen name="Home" component={HomeScreen} />

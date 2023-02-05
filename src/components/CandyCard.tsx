@@ -7,10 +7,12 @@ import { CandyModel } from "../models";
 
 interface Props {
   candy: CandyModel;
+  onUpdatePress: () => void;
 }
 
 export const CandyCard = ({
   candy: { name, description, image, price, id },
+  onUpdatePress,
 }: Props) => {
   const { deleteCandy } = useCandyStore();
 
@@ -33,10 +35,10 @@ export const CandyCard = ({
         <Text style={styles.price}>$ {price.toFixed(2).toString()}</Text>
       </View>
       <View style={styles.iconsContainer}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={onUpdatePress}>
           <FontAwesome5 name="edit" size={24} color="deepskyblue" />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => deleteCandy(id)}>
+        <TouchableOpacity onPress={() => deleteCandy(id!)}>
           <FontAwesome5 name="trash-alt" size={24} color="orangered" />
         </TouchableOpacity>
       </View>
@@ -58,7 +60,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
   },
   dataContainer: {
-    paddingHorizontal: 8,
+    paddingHorizontal: 16,
     flex: 1,
   },
   name: {

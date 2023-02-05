@@ -25,7 +25,10 @@ export const HomeScreen = ({ navigation }: Props) => {
   }, []);
 
   const renderItem = ({ item }: { item: CandyModel }) => (
-    <CandyCard candy={item} />
+    <CandyCard
+      candy={item}
+      onUpdatePress={() => navigation.push("CandyForm", item)}
+    />
   );
 
   const Separetor = () => {
@@ -49,7 +52,7 @@ export const HomeScreen = ({ navigation }: Props) => {
         ) : (
           <FlatList
             data={candies}
-            keyExtractor={(item) => item.id}
+            keyExtractor={(item) => item.id || item.name}
             renderItem={renderItem}
             ItemSeparatorComponent={Separetor}
           />

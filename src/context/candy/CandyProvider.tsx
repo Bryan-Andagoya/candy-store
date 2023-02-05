@@ -1,4 +1,11 @@
-import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  setDoc,
+} from "firebase/firestore";
 import { useState } from "react";
 import { Alert } from "react-native";
 
@@ -30,9 +37,27 @@ export const CandyProvider = ({ children }: Props) => {
 
   const deleteCandy: CandyStore["deleteCandy"] = async (id) => {
     try {
+      const newData = candies?.filter((candy) => candy.id !== id) || null;
+      setCandies(newData);
       await deleteDoc(doc(db, "candies", id));
-      setCandies(null);
-      getCandies();
+    } catch (error) {
+      Alert.alert("Error", (error as any).message);
+    }
+  };
+
+  const addCandy: CandyStore["addCandy"] = async (candy) => {
+    try {
+      await addDoc(collection(db, "candies"), candy);
+      await getCandies();
+    } catch (error) {
+      Alert.alert("Error", (error as any).message);
+    }
+  };
+
+  const updateCandy: CandyStore["updateCandy"] = async ({ id, ...candy }) => {
+    try {
+      await setDoc(doc(db, "candies", id!), candy);
+      await getCandies();
     } catch (error) {
       Alert.alert("Error", (error as any).message);
     }
@@ -42,6 +67,8 @@ export const CandyProvider = ({ children }: Props) => {
     candies,
     getCandies,
     deleteCandy,
+    addCandy,
+    updateCandy,
   };
 
   return (
