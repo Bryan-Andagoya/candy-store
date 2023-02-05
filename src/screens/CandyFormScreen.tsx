@@ -9,16 +9,16 @@ interface Props
   extends NativeStackScreenProps<StackNavigatorParamList, "CandyForm"> {}
 
 export const CandyFormScreen = ({ route: { params } }: Props) => {
-  const [name, setName] = useState<string>("");
-  const [description, setDescription] = useState<string>("");
-  const [price, setPrice] = useState<string>("");
+  // const [name, setName] = useState<string>("");
+  // const [description, setDescription] = useState<string>("");
+  // const [price, setPrice] = useState<string>("");
 
   return (
     <View style={styles.container}>
       <View>
         <Text>Candy</Text>
       </View>
-      <View style={styles.form}>
+      {/* <View style={styles.form}>
         <View style={styles.inputContainer}>
           <CustomTextInput
             placeholder="Name"
@@ -26,7 +26,7 @@ export const CandyFormScreen = ({ route: { params } }: Props) => {
             onChangeText={setName}
           />
         </View>
-      </View>
+      </View> */}
     </View>
   );
 };

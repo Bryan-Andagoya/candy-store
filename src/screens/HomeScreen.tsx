@@ -2,7 +2,6 @@ import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { useEffect } from "react";
 import {
   ActivityIndicator,
-  Button,
   FlatList,
   StyleSheet,
   Text,
@@ -34,7 +33,7 @@ export const HomeScreen = ({ navigation }: Props) => {
   };
 
   const goToForm = () => {
-    navigation.navigate("CandyForm");
+    navigation.push("CandyForm");
   };
 
   return (
