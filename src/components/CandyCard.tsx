@@ -18,7 +18,7 @@ export const CandyCard = ({
 
   return (
     <View style={styles.card}>
-      <View>
+      <View style={styles.imageContainer}>
         <Image
           source={{
             uri:
@@ -38,6 +38,7 @@ export const CandyCard = ({
         <TouchableOpacity onPress={onUpdatePress}>
           <FontAwesome5 name="edit" size={24} color="deepskyblue" />
         </TouchableOpacity>
+        <View style={{ height: 16 }} />
         <TouchableOpacity onPress={() => deleteCandy(id!)}>
           <FontAwesome5 name="trash-alt" size={24} color="orangered" />
         </TouchableOpacity>
@@ -53,6 +54,9 @@ const styles = StyleSheet.create({
     padding: 16,
     flexDirection: "row",
     borderRadius: 8,
+  },
+  imageContainer: {
+    justifyContent: "center",
   },
   image: {
     width: 60,
@@ -70,8 +74,10 @@ const styles = StyleSheet.create({
   price: {
     color: "green",
     marginTop: 3,
+    fontWeight: "500",
+    fontSize: 16,
   },
   iconsContainer: {
-    justifyContent: "space-between",
+    justifyContent: "center",
   },
 });

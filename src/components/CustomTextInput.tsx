@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, TextInput, TextInputProps } from "react-native";
 
 interface Props {
@@ -18,15 +18,19 @@ export const CustomTextInput = ({
   keyboardType,
   secureTextEntry,
 }: Props) => {
+  const [isFocus, setIsFocus] = useState<boolean>(false);
+
   return (
     <TextInput
-      style={styles.input}
+      style={[styles.input, isFocus && { borderColor: "orangered" }]}
       placeholder={placeholder}
       value={value}
       onChangeText={onChangeText}
       autoCapitalize={autoCapitalize}
       keyboardType={keyboardType}
       secureTextEntry={secureTextEntry}
+      onFocus={() => setIsFocus(true)}
+      onBlur={() => setIsFocus(false)}
     />
   );
 };

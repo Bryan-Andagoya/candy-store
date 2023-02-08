@@ -41,7 +41,7 @@ export const RegisterScreen = () => {
           />
         </View>
         <View style={styles.buttonContainer}>
-          <CustomButton text="Login" onPress={register} loading={loading} />
+          <CustomButton text="Sign Up" onPress={register} loading={loading} />
         </View>
       </View>
     </View>
